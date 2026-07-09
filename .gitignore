@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+._*
+._.DS_Store
+.___*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.env
+.venv/
+
+# Data / Results (too large for GitHub)
+revised_results/
+results/
+NEW/
+data/
+models/
+*.pkl
+*.joblib
+*.json
+predictions/
+
+# Jupyter
+.ipynb_checkpoints/
