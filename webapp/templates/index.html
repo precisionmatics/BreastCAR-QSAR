@@ -9,424 +9,401 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
-/* ── Reset ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-:root {
-  --blue:       #1d4ed8;
-  --blue-dark:  #1e3a8a;
-  --blue-light: #eff6ff;
-  --blue-mid:   #dbeafe;
-  --green:      #16a34a;
-  --green-bg:   #f0fdf4;
-  --amber:      #d97706;
-  --amber-bg:   #fffbeb;
-  --red:        #dc2626;
-  --red-bg:     #fff1f2;
-  --text:       #0f172a;
-  --text2:      #475569;
-  --text3:      #94a3b8;
-  --border:     #e2e8f0;
-  --border2:    #cbd5e1;
-  --bg:         #f8fafc;
-  --white:      #ffffff;
-  --radius:     8px;
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
-  --shadow:     0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg:  0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
-  --font-mono:  'JetBrains Mono', monospace;
-}
-
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  line-height: 1.6;
-  font-size: 14px;
-}
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-
-/* ── Header ─────────────────────────────────────────── */
-header {
-  background: var(--blue-dark);
-  border-bottom: 1px solid #1e3a8a;
-  position: sticky; top: 0; z-index: 100;
-}
-.header-inner {
-  max-width: 1280px; margin: 0 auto;
-  padding: 0 2rem;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 58px;
-}
-.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-name { font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: -0.01em; }
-.logo-tag { font-size: 0.65rem; color: #93c5fd; font-weight: 400; margin-top: -1px; letter-spacing: 0.03em; text-transform: uppercase; }
-
-.header-meta { display: flex; align-items: center; gap: 24px; }
-.hm-item { display: flex; flex-direction: column; align-items: center; }
-.hm-val { font-size: 1rem; font-weight: 700; color: #fff; line-height: 1; }
-.hm-key { font-size: 0.6rem; color: #93c5fd; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
-.hm-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.15); }
-.status-dot {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.75rem; color: #86efac; font-weight: 500;
-}
-.status-dot::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; display: block; }
-
-/* ── Hero banner ─────────────────────────────────────── */
-.hero-banner {
-  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 60%, #2563eb 100%);
-  padding: 2.5rem 2rem;
-  border-bottom: 1px solid var(--border);
-}
-.hero-inner { max-width: 1280px; margin: 0 auto; }
-.hero-banner h1 {
-  font-size: 1.65rem; font-weight: 800; color: #fff;
-  letter-spacing: -0.03em; margin-bottom: 0.5rem; line-height: 1.2;
-}
-.hero-banner p { font-size: 0.9rem; color: #bfdbfe; max-width: 680px; line-height: 1.6; margin-bottom: 1.25rem; }
-.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; }
-.hbadge {
-  padding: 4px 12px; border-radius: 4px; font-size: 0.72rem; font-weight: 600;
-  background: rgba(255,255,255,0.12); color: #e0f2fe;
-  border: 1px solid rgba(255,255,255,0.15);
-  letter-spacing: 0.02em;
+:root{
+  --pri:       #0d9488;
+  --pri-dark:  #0f766e;
+  --pri-light: #f0fdfa;
+  --pri-mid:   #ccfbf1;
+  --pri-border:#5eead4;
+  --green:     #059669;
+  --green-bg:  #ecfdf5;
+  --green-b:   #6ee7b7;
+  --amber:     #d97706;
+  --amber-bg:  #fffbeb;
+  --amber-b:   #fcd34d;
+  --red:       #dc2626;
+  --red-bg:    #fef2f2;
+  --red-b:     #fca5a5;
+  --text:      #111827;
+  --text2:     #6b7280;
+  --text3:     #9ca3af;
+  --border:    #e5e7eb;
+  --border2:   #d1d5db;
+  --bg:        #f9fafb;
+  --white:     #ffffff;
+  --r:         10px;
+  --r-lg:      14px;
+  --sh-sm:     0 1px 2px rgba(0,0,0,.05);
+  --sh:        0 4px 6px -1px rgba(0,0,0,.07),0 2px 4px -1px rgba(0,0,0,.04);
+  --mono:      'JetBrains Mono',monospace;
 }
 
-/* ── Main layout ─────────────────────────────────────── */
-.main { max-width: 1280px; margin: 0 auto; padding: 1.75rem 2rem 4rem; }
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;font-size:14px}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
 
-/* ── Tabs ────────────────────────────────────────────── */
-.tab-bar {
-  display: flex; border-bottom: 2px solid var(--border);
-  margin-bottom: 1.75rem; gap: 0;
+/* ── HEADER ─────────────────────────────────── */
+header{
+  background:var(--white);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
-.tab-btn {
-  padding: 10px 20px; font-size: 0.84rem; font-weight: 500;
-  border: none; background: none; color: var(--text2);
-  cursor: pointer; font-family: inherit;
-  border-bottom: 2px solid transparent; margin-bottom: -2px;
-  display: flex; align-items: center; gap: 7px;
-  transition: color 0.15s;
-}
-.tab-btn:hover { color: var(--text); }
-.tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); font-weight: 600; }
-.tab-btn svg { width: 14px; height: 14px; }
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
-
-/* ── Cards ───────────────────────────────────────────── */
-.card {
-  background: var(--white); border: 1px solid var(--border);
-  border-radius: var(--radius); box-shadow: var(--shadow-sm);
-}
-.card-header {
-  padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.card-title {
-  font-size: 0.82rem; font-weight: 700; color: var(--text);
-  text-transform: uppercase; letter-spacing: 0.07em;
-  display: flex; align-items: center; gap: 8px;
-}
-.card-title-accent {
-  width: 3px; height: 14px; background: var(--blue); border-radius: 2px; flex-shrink: 0;
+.hdr{
+  max-width:1200px;margin:0 auto;padding:0 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:62px;gap:1.5rem;
 }
 
-/* ── Input section ───────────────────────────────────── */
-.input-row {
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 1rem; align-items: start;
-  padding: 1.25rem;
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
+.logo-icon{
+  width:34px;height:34px;border-radius:8px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pri),var(--pri-dark));
+  color:#fff;font-weight:800;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
 }
-.smiles-field {
-  font-family: var(--font-mono); font-size: 0.85rem;
-  background: #fff; border: 1.5px solid var(--border2);
-  border-radius: var(--radius); color: var(--text);
-  padding: 0.8rem 1rem; resize: none; width: 100%;
-  min-height: 80px; line-height: 1.5;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.smiles-field:focus {
-  outline: none; border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(29,78,216,0.10);
-}
-.smiles-field::placeholder { color: var(--text3); }
+.logo-name{font-size:1rem;font-weight:700;color:var(--text);line-height:1.2}
+.logo-sub{font-size:.62rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em}
 
-.examples-line { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 0.6rem; }
-.examples-label { font-size: 0.72rem; color: var(--text3); font-weight: 500; }
-.ex-tag {
-  padding: 3px 10px; border-radius: 4px; font-size: 0.72rem; font-weight: 500;
-  background: var(--blue-light); border: 1px solid #bfdbfe;
-  color: var(--blue); cursor: pointer; transition: all 0.12s;
+/* nav tabs live in header */
+.hdr-nav{
+  display:flex;align-items:center;gap:3px;
+  background:var(--bg);padding:4px;border-radius:9px;
+  border:1px solid var(--border);
 }
-.ex-tag:hover { background: var(--blue-mid); }
+.tab-btn{
+  padding:6px 18px;border:none;border-radius:7px;
+  font-size:.82rem;font-weight:500;color:var(--text2);
+  background:transparent;cursor:pointer;font-family:inherit;
+  transition:all .15s;white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+}
+.tab-btn svg{width:13px;height:13px}
+.tab-btn:hover{color:var(--text);background:var(--white)}
+.tab-btn.active{color:var(--white);background:var(--pri);box-shadow:0 1px 4px rgba(13,148,136,.35)}
 
-.btn-col { display: flex; flex-direction: column; gap: 6px; min-width: 130px; }
-.btn {
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding: 0.65rem 1.1rem; border-radius: var(--radius);
-  font-family: inherit; font-size: 0.85rem; font-weight: 600;
-  cursor: pointer; border: none; transition: all 0.15s; white-space: nowrap;
+.hdr-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.stat-chip{
+  font-size:.73rem;font-weight:600;color:var(--text2);
+  background:var(--bg);border:1px solid var(--border);
+  padding:4px 10px;border-radius:6px;white-space:nowrap;
 }
-.btn-primary {
-  background: var(--blue); color: #fff;
-  box-shadow: 0 2px 6px rgba(29,78,216,0.3);
+.online-pill{
+  display:flex;align-items:center;gap:5px;
+  font-size:.72rem;font-weight:600;color:var(--green);
+  background:var(--green-bg);border:1px solid var(--green-b);
+  padding:4px 10px;border-radius:6px;
 }
-.btn-primary:hover { background: #1e40af; }
-.btn-primary:active { transform: scale(0.99); }
-.btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
-.btn-ghost {
-  background: #fff; color: var(--text2);
-  border: 1px solid var(--border2);
+.online-pill::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--green);flex-shrink:0;
+  animation:pulse 2s ease-in-out infinite;
 }
-.btn-ghost:hover { background: #f8fafc; color: var(--text); }
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-/* ── Loading ─────────────────────────────────────────── */
-.loading-state {
-  display: none; flex-direction: column; align-items: center;
-  gap: 1rem; padding: 3rem; text-align: center;
-}
-.loading-state.active { display: flex; }
-.spinner {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 3px solid #e2e8f0; border-top-color: var(--blue);
-  animation: spin 0.75s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.loading-text { font-size: 0.88rem; color: var(--text2); font-weight: 500; }
+/* ── PAGE ───────────────────────────────────── */
+.page{max-width:1200px;margin:0 auto;padding:0 2rem 4rem}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
 
-/* ── Error ───────────────────────────────────────────── */
-.alert-error {
-  display: none; align-items: center; gap: 8px;
-  padding: 0.8rem 1rem; border-radius: var(--radius);
-  background: var(--red-bg); border: 1px solid #fecaca;
-  color: var(--red); font-size: 0.85rem; margin-bottom: 1rem;
+/* ── INTRO ──────────────────────────────────── */
+.intro{
+  text-align:center;padding:2.5rem 1rem 2rem;
+  max-width:680px;margin:0 auto;
 }
-.alert-error.active { display: flex; }
-
-/* ── Results ─────────────────────────────────────────── */
-.results { display: none; }
-.results.active { display: block; animation: fade-in 0.3s ease; }
-@keyframes fade-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; } }
-
-/* Top panel: mol + right side */
-.result-top {
-  display: grid; grid-template-columns: 240px 1fr;
-  gap: 1.25rem; margin-bottom: 1.25rem;
-  align-items: start;
+.intro h1{
+  font-size:1.55rem;font-weight:800;color:var(--text);
+  letter-spacing:-.025em;margin-bottom:.5rem;line-height:1.25;
 }
-@media (max-width: 900px) { .result-top { grid-template-columns: 1fr; } }
-.result-top > * { min-width: 0; }
+.intro p{font-size:.9rem;color:var(--text2);line-height:1.65}
+.intro p strong{color:var(--text)}
 
-/* Molecule card */
-.mol-card {
-  display: flex; flex-direction: column; gap: 0.75rem;
-  padding: 1rem; background: var(--white);
-  border: 1px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
+/* ── INPUT CARD ─────────────────────────────── */
+.input-card{
+  max-width:820px;margin:0 auto 1.5rem;
+  background:var(--white);border:1.5px solid var(--border);
+  border-radius:var(--r-lg);box-shadow:var(--sh);overflow:hidden;
 }
-.mol-draw {
-  background: #fafafa; border: 1px solid var(--border);
-  border-radius: 6px; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  padding: 4px; min-height: 150px; max-height: 220px; width: 100%;
+.smiles-field{
+  font-family:var(--mono);font-size:.87rem;
+  background:transparent;border:none;color:var(--text);
+  padding:1.25rem 1.5rem;resize:none;width:100%;
+  min-height:92px;line-height:1.7;
 }
-.mol-draw svg { width: 100% !important; height: auto !important; max-width: 100%; max-height: 210px; display: block; }
-.mol-label { text-align: center; }
-.mol-name { font-size: 0.82rem; font-weight: 600; color: var(--text); }
-.mol-smi  { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text3); word-break: break-all; margin-top: 2px; }
-
-/* ── Right side stack ────────────────────────────────── */
-.result-right { display: flex; flex-direction: column; gap: 1.25rem; }
-
-/* Activity summary */
-.act-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
-.act-card {
-  padding: 1.1rem; border-radius: var(--radius); text-align: center;
-  border: 1px solid; position: relative;
+.smiles-field:focus{outline:none}
+.smiles-field::placeholder{color:var(--text3)}
+.input-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;border-top:1px solid var(--border);
+  background:var(--bg);gap:1rem;flex-wrap:wrap;
 }
-.act-card-active   { background: var(--green-bg);  border-color: #bbf7d0; }
-.act-card-moderate { background: var(--amber-bg);  border-color: #fde68a; }
-.act-card-inactive { background: var(--red-bg);    border-color: #fecaca; }
-.act-num { font-size: 2.4rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
-.act-card-active   .act-num { color: var(--green); }
-.act-card-moderate .act-num { color: var(--amber); }
-.act-card-inactive .act-num { color: var(--red);   }
-.act-lbl { font-size: 0.78rem; font-weight: 600; color: var(--text2); }
-.act-sub { font-size: 0.65rem; color: var(--text3); margin-top: 3px; }
-
-/* Props grid */
-.props-section { padding: 1.1rem 1.25rem; }
-.props-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; margin-top: 0.85rem; }
-.prop-item {
-  background: #f8fafc; border: 1px solid var(--border);
-  border-radius: 6px; padding: 0.5rem 0.6rem; text-align: center;
+.ex-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ex-label{font-size:.7rem;color:var(--text3);font-weight:500}
+.ex-tag{
+  padding:3px 10px;border-radius:5px;font-size:.7rem;font-weight:500;
+  background:var(--white);border:1px solid var(--border2);
+  color:var(--text2);cursor:pointer;transition:all .12s;
 }
-.prop-val { font-size: 0.92rem; font-weight: 700; color: var(--text); }
-.prop-key { font-size: 0.6rem; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
-.lipinski-row { grid-column: span 2; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.ex-tag:hover{border-color:var(--pri);color:var(--pri);background:var(--pri-light)}
+.input-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 
-/* ── Charts ──────────────────────────────────────────── */
-.charts-row { display: grid; grid-template-columns: 260px 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
-@media (max-width: 900px) { .charts-row { grid-template-columns: 1fr; } }
-.chart-body { padding: 1rem 1.25rem; }
-
-/* ── Download ────────────────────────────────────────── */
-.dl-row {
-  display: none; align-items: center; justify-content: space-between;
-  padding: 0.75rem 1.25rem; margin-bottom: 1.25rem;
-  background: var(--blue-light); border: 1px solid #bfdbfe;
-  border-radius: var(--radius); flex-wrap: wrap; gap: 0.75rem;
+/* ── BUTTONS ─────────────────────────────────── */
+.btn-primary{
+  display:flex;align-items:center;gap:6px;
+  padding:.58rem 1.3rem;border-radius:8px;
+  font-family:inherit;font-size:.85rem;font-weight:600;
+  background:var(--pri);color:#fff;border:none;cursor:pointer;
+  transition:all .15s;box-shadow:0 1px 4px rgba(13,148,136,.35);
 }
-.dl-row.active { display: flex; }
-.dl-label { font-size: 0.82rem; color: var(--text2); display: flex; align-items: center; gap: 6px; }
-.dl-btns { display: flex; gap: 8px; }
-.btn-dl {
-  padding: 5px 14px; background: var(--blue); color: #fff;
-  border: none; border-radius: 5px; font-size: 0.78rem; font-weight: 600;
-  cursor: pointer; font-family: inherit; transition: background 0.15s;
+.btn-primary:hover{background:var(--pri-dark)}
+.btn-primary:active{transform:scale(.98)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{
+  display:flex;align-items:center;gap:6px;
+  padding:.58rem 1rem;border-radius:8px;
+  font-family:inherit;font-size:.85rem;font-weight:500;
+  background:var(--white);color:var(--text2);
+  border:1px solid var(--border2);cursor:pointer;transition:all .15s;
 }
-.btn-dl:hover { background: #1e40af; }
+.btn-ghost:hover{background:var(--bg);color:var(--text)}
 
-/* ── Table ───────────────────────────────────────────── */
-.table-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-thead th {
-  padding: 0.65rem 1.1rem; text-align: left;
-  font-size: 0.68rem; font-weight: 700; color: var(--text2);
-  text-transform: uppercase; letter-spacing: 0.07em;
-  background: #f8fafc; border-bottom: 1px solid var(--border);
-  cursor: pointer; user-select: none; white-space: nowrap;
-  transition: color 0.12s;
+/* ── LOADING ─────────────────────────────────── */
+.loading-state{display:none;flex-direction:column;align-items:center;gap:1rem;padding:3rem 1rem;text-align:center}
+.loading-state.active{display:flex}
+.spinner{width:32px;height:32px;border-radius:50%;border:2.5px solid #e5e7eb;border-top-color:var(--pri);animation:spin .75s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:.88rem;color:var(--text2);font-weight:500}
+
+/* ── ERROR ───────────────────────────────────── */
+.alert-error{
+  display:none;align-items:center;gap:8px;
+  padding:.75rem 1rem;border-radius:8px;
+  background:var(--red-bg);border:1px solid var(--red-b);
+  color:var(--red);font-size:.84rem;
+  max-width:820px;margin:0 auto 1rem;
 }
-thead th:hover { color: var(--blue); }
-thead th.th-sorted { color: var(--blue); }
-thead th .si { font-size: 0.6rem; margin-left: 2px; color: var(--text3); }
-thead th.th-sorted .si { color: var(--blue); }
-tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: #f8fafc; }
-tbody td { padding: 0.6rem 1.1rem; vertical-align: middle; }
+.alert-error.active{display:flex}
 
-.td-name { font-weight: 600; color: var(--text); font-size: 0.82rem; }
-.td-pic50 { font-family: var(--font-mono); font-weight: 600; font-size: 0.82rem; }
-.td-ic50  { font-family: var(--font-mono); font-size: 0.76rem; color: var(--text2); }
+/* ── RESULTS ─────────────────────────────────── */
+.results{display:none}
+.results.active{display:block;animation:fadein .3s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
 
-.act-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 2px 9px; border-radius: 3px;
-  font-size: 0.7rem; font-weight: 700;
+/* activity strip */
+.act-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem}
+.act-card{padding:1.3rem;border-radius:var(--r-lg);text-align:center;border:1px solid}
+.act-card-active  {background:var(--green-bg);border-color:var(--green-b)}
+.act-card-moderate{background:var(--amber-bg);border-color:var(--amber-b)}
+.act-card-inactive{background:var(--red-bg);  border-color:var(--red-b)}
+.act-num{font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:4px}
+.act-card-active   .act-num{color:var(--green)}
+.act-card-moderate .act-num{color:var(--amber)}
+.act-card-inactive .act-num{color:var(--red)}
+.act-lbl{font-size:.82rem;font-weight:600;color:var(--text)}
+.act-sub{font-size:.64rem;color:var(--text3);margin-top:3px}
+
+/* molecule + props row */
+.result-mid{display:grid;grid-template-columns:290px 1fr;gap:1.25rem;margin-bottom:1.25rem;align-items:start}
+@media(max-width:860px){.result-mid{grid-template-columns:1fr}}
+
+.mol-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1rem;box-shadow:var(--sh-sm);
+  display:flex;flex-direction:column;gap:.75rem;
 }
-.act-badge-Active   { background: var(--green-bg); color: var(--green); border: 1px solid #bbf7d0; }
-.act-badge-Moderate { background: var(--amber-bg); color: var(--amber); border: 1px solid #fde68a; }
-.act-badge-Inactive { background: var(--red-bg);   color: var(--red);   border: 1px solid #fecaca; }
-.act-badge-Unknown  { background: #f1f5f9; color: var(--text3); border: 1px solid var(--border); }
-
-.pic50-bar-cell { display: flex; align-items: center; gap: 8px; }
-.pic50-track { flex: 1; height: 4px; background: #e2e8f0; border-radius: 99px; overflow: hidden; min-width: 50px; }
-.pic50-fill  { height: 100%; border-radius: 99px; transition: width 0.5s; }
-
-.prob-bar { display: flex; height: 5px; border-radius: 3px; overflow: hidden; min-width: 60px; }
-
-/* ── Filter controls ─────────────────────────────────── */
-.tbl-controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.tbl-search {
-  padding: 5px 10px; background: #fff; border: 1px solid var(--border2);
-  border-radius: 5px; font-family: inherit; font-size: 0.8rem;
-  color: var(--text); width: 155px; transition: border-color 0.15s;
+.mol-draw{
+  background:#fafafa;border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  min-height:190px;
 }
-.tbl-search:focus { outline: none; border-color: var(--blue); }
-.filter-btns { display: flex; gap: 4px; }
-.fb {
-  padding: 4px 11px; border-radius: 4px; font-size: 0.72rem; font-weight: 600;
-  border: 1px solid; cursor: pointer; font-family: inherit; transition: all 0.12s; background: #fff;
-}
-.fb-all      { border-color: var(--border2); color: var(--text2); }
-.fb-all.sel  { border-color: var(--blue);  background: var(--blue-light);  color: var(--blue);  }
-.fb-a        { border-color: #bbf7d0; color: var(--green); }
-.fb-a.sel    { background: var(--green-bg); }
-.fb-m        { border-color: #fde68a; color: var(--amber); }
-.fb-m.sel    { background: var(--amber-bg); }
-.fb-i        { border-color: #fecaca; color: var(--red); }
-.fb-i.sel    { background: var(--red-bg); }
+.mol-draw svg{width:100%!important;height:auto!important;max-width:100%;display:block}
+.mol-label{text-align:center}
+.mol-name{font-size:.84rem;font-weight:600;color:var(--text)}
+.mol-smi{font-family:var(--mono);font-size:.59rem;color:var(--text3);word-break:break-all;margin-top:2px}
 
-/* ── Batch ───────────────────────────────────────────── */
-.batch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; margin-top: 1.25rem; }
-.batch-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
-.batch-top  { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; background: #f8fafc; }
-.batch-idx  { font-size: 0.78rem; font-weight: 700; color: var(--text); }
-.batch-body { padding: 1rem; }
-.batch-stats{ display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 0.75rem; }
-.bs { text-align: center; background: #f8fafc; border: 1px solid var(--border); border-radius: 5px; padding: 0.5rem; }
-.bs-v { font-size: 1.1rem; font-weight: 800; }
-.bs-l { font-size: 0.6rem; color: var(--text3); text-transform: uppercase; }
-.batch-best { font-size: 0.75rem; color: var(--text2); margin-bottom: 4px; }
-.batch-best b { color: var(--blue); }
-.batch-smi  { font-family: var(--font-mono); font-size: 0.58rem; color: var(--text3); word-break: break-all; }
-.batch-mol  { background: #fafafa; border: 1px solid var(--border); border-radius: 4px; padding: 4px; margin-top: 0.75rem; display: flex; justify-content: center; }
-.batch-mol svg { width: 100% !important; height: auto !important; max-width: 100%; }
+.props-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--sh-sm);
+}
+.props-title{
+  font-size:.73rem;font-weight:700;color:var(--text2);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);
+}
+.props-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px}
+.prop-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.65rem .75rem;text-align:center}
+.prop-val{font-size:.95rem;font-weight:700;color:var(--text)}
+.prop-key{font-size:.59rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.lipinski-row{grid-column:span 2;display:flex;align-items:center;justify-content:center;gap:8px}
 
-/* ── Explore ─────────────────────────────────────────── */
-.explore-tbl { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
-.explore-tbl thead th {
-  padding: 0.7rem 1.1rem;
-  font-size: 0.67rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.07em; color: var(--text2);
-  background: #f8fafc; border-bottom: 1px solid var(--border);
-  text-align: left; white-space: nowrap;
+/* charts */
+.charts-row{display:grid;grid-template-columns:290px 1fr;gap:1.25rem;margin-bottom:1.25rem}
+@media(max-width:860px){.charts-row{grid-template-columns:1fr}}
+.chart-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--sh-sm);
 }
-.explore-tbl tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
-.explore-tbl tbody tr:hover { background: #f8fafc; }
-.explore-tbl tbody td { padding: 0.65rem 1.1rem; }
-.target-tag {
-  display: inline-block; padding: 2px 9px; border-radius: 4px;
-  background: var(--blue-light); border: 1px solid #bfdbfe;
-  font-size: 0.74rem; font-weight: 700; color: var(--blue);
-  font-family: var(--font-mono);
+.chart-title{
+  font-size:.73rem;font-weight:700;color:var(--text2);
+  text-transform:uppercase;letter-spacing:.07em;
+  margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);
 }
-.model-tag {
-  display: inline-block; padding: 2px 8px; border-radius: 3px;
-  font-size: 0.7rem; font-weight: 700;
-}
-.mt-RF  { background: var(--green-bg); color: var(--green); border: 1px solid #bbf7d0; }
-.mt-XGB { background: var(--amber-bg); color: var(--amber); border: 1px solid #fde68a; }
-.mt-LGB { background: #f5f3ff; color: #7c3aed; border: 1px solid #ddd6fe; }
-.mt-x   { background: #f1f5f9; color: var(--text3); border: 1px solid var(--border); }
-.dist-bar { display: flex; height: 6px; border-radius: 3px; overflow: hidden; width: 80px; gap: 1px; }
-.db-a { background: var(--green); }
-.db-m { background: var(--amber); }
-.db-i { background: var(--red); opacity: 0.4; }
-.pct-text { font-size: 0.75rem; font-weight: 600; color: var(--text); }
-.explore-toolbar { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; background: #fff; }
-.explore-search {
-  padding: 6px 12px; background: #fff; border: 1px solid var(--border2);
-  border-radius: 6px; font-family: inherit; font-size: 0.82rem;
-  color: var(--text); width: 200px; transition: border-color 0.15s;
-}
-.explore-search:focus { outline: none; border-color: var(--blue); }
-.explore-title-area h3 { font-size: 0.9rem; font-weight: 700; color: var(--text); }
-.explore-title-area p  { font-size: 0.76rem; color: var(--text2); margin-top: 2px; }
 
-/* ── Footer ──────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--border); padding: 1.5rem 2rem;
-  text-align: center; font-size: 0.74rem; color: var(--text3);
-  background: var(--white); line-height: 1.8;
+/* download bar */
+.dl-row{
+  display:none;align-items:center;justify-content:space-between;
+  padding:.75rem 1.25rem;margin-bottom:1.25rem;
+  background:var(--pri-light);border:1px solid var(--pri-border);
+  border-radius:var(--r);flex-wrap:wrap;gap:.75rem;
 }
-footer span { color: var(--text2); }
+.dl-row.active{display:flex}
+.dl-label{font-size:.82rem;color:var(--text2);display:flex;align-items:center;gap:6px}
+.dl-btns{display:flex;gap:8px}
+.btn-dl{
+  padding:5px 14px;background:var(--pri);color:#fff;
+  border:none;border-radius:6px;font-size:.78rem;font-weight:600;
+  cursor:pointer;font-family:inherit;transition:background .15s;
+}
+.btn-dl:hover{background:var(--pri-dark)}
 
-/* ── Responsive ──────────────────────────────────────── */
-@media (max-width: 640px) {
-  .main { padding: 1rem 1rem 3rem; }
-  .input-row { grid-template-columns: 1fr; }
-  .btn-col { flex-direction: row; }
-  .act-row { grid-template-columns: 1fr 1fr; }
-  .header-meta { display: none; }
+/* table */
+.table-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm);
+}
+.table-hdr{
+  padding:1rem 1.25rem;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.75rem;background:var(--bg);
+}
+.table-title{font-size:.73rem;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.07em}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+thead th{
+  padding:.7rem 1rem;text-align:left;
+  font-size:.67rem;font-weight:700;color:var(--text2);
+  text-transform:uppercase;letter-spacing:.07em;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  cursor:pointer;user-select:none;white-space:nowrap;transition:color .12s;
+}
+thead th:hover{color:var(--pri)}
+thead th.th-sorted{color:var(--pri)}
+thead th .si{font-size:.6rem;margin-left:2px;color:var(--text3)}
+thead th.th-sorted .si{color:var(--pri)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#f9fafb}
+tbody td{padding:.65rem 1rem;vertical-align:middle}
+.td-name{font-weight:600;color:var(--text)}
+.td-pic50{font-family:var(--mono);font-weight:600}
+.td-ic50{font-family:var(--mono);font-size:.76rem;color:var(--text2)}
+
+.act-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 9px;border-radius:4px;
+  font-size:.7rem;font-weight:700;letter-spacing:.02em;
+}
+.act-badge-Active  {background:var(--green-bg);color:var(--green);border:1px solid var(--green-b)}
+.act-badge-Moderate{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b)}
+.act-badge-Inactive{background:var(--red-bg);  color:var(--red);  border:1px solid var(--red-b)}
+.act-badge-Unknown {background:#f3f4f6;color:var(--text3);border:1px solid var(--border)}
+
+.pic50-bar-cell{display:flex;align-items:center;gap:8px}
+.pic50-track{flex:1;height:3px;background:#e5e7eb;border-radius:99px;overflow:hidden;min-width:50px}
+.pic50-fill{height:100%;border-radius:99px;transition:width .5s}
+.prob-bar{display:flex;height:4px;border-radius:3px;overflow:hidden;min-width:60px}
+
+/* filter controls */
+.tbl-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tbl-search{
+  padding:5px 10px;background:var(--white);border:1px solid var(--border2);
+  border-radius:6px;font-family:inherit;font-size:.8rem;
+  color:var(--text);width:160px;transition:border-color .15s;
+}
+.tbl-search:focus{outline:none;border-color:var(--pri)}
+.filter-btns{display:flex;gap:4px}
+.fb{
+  padding:4px 10px;border-radius:5px;font-size:.72rem;font-weight:600;
+  border:1px solid;cursor:pointer;font-family:inherit;transition:all .12s;background:var(--white);
+}
+.fb-all    {border-color:var(--border2);color:var(--text2)}
+.fb-all.sel{border-color:var(--pri);background:var(--pri-light);color:var(--pri)}
+.fb-a      {border-color:var(--green-b);color:var(--green)}
+.fb-a.sel  {background:var(--green-bg)}
+.fb-m      {border-color:var(--amber-b);color:var(--amber)}
+.fb-m.sel  {background:var(--amber-bg)}
+.fb-i      {border-color:var(--red-b);color:var(--red)}
+.fb-i.sel  {background:var(--red-bg)}
+
+/* batch */
+.batch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1.25rem}
+.batch-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.batch-top{padding:.75rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+.batch-idx{font-size:.8rem;font-weight:700;color:var(--text)}
+.batch-body{padding:1rem}
+.batch-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:.75rem}
+.bs{text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:.5rem}
+.bs-v{font-size:1.1rem;font-weight:800}
+.bs-l{font-size:.6rem;color:var(--text3);text-transform:uppercase}
+.batch-best{font-size:.75rem;color:var(--text2);margin-bottom:4px}
+.batch-best b{color:var(--pri)}
+.batch-smi{font-family:var(--mono);font-size:.58rem;color:var(--text3);word-break:break-all}
+.batch-mol{background:#fafafa;border:1px solid var(--border);border-radius:5px;padding:4px;margin-top:.75rem;display:flex;justify-content:center}
+.batch-mol svg{width:100%!important;height:auto!important}
+
+/* explore */
+.explore-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-sm)}
+.explore-toolbar{padding:1rem 1.25rem;border-bottom:1px solid var(--border);background:var(--bg)}
+.explore-search{
+  padding:7px 12px;background:var(--white);border:1px solid var(--border2);
+  border-radius:7px;font-family:inherit;font-size:.82rem;
+  color:var(--text);width:240px;transition:border-color .15s;
+}
+.explore-search:focus{outline:none;border-color:var(--pri)}
+.explore-tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.explore-tbl thead th{
+  padding:.7rem 1rem;font-size:.67rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--text2);background:var(--bg);
+  border-bottom:1px solid var(--border);text-align:left;white-space:nowrap;
+}
+.explore-tbl tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+.explore-tbl tbody tr:hover{background:#f9fafb}
+.explore-tbl tbody td{padding:.65rem 1rem}
+.target-tag{
+  display:inline-block;padding:2px 9px;border-radius:5px;
+  background:var(--pri-light);border:1px solid var(--pri-mid);
+  font-size:.74rem;font-weight:700;color:var(--pri);font-family:var(--mono);
+}
+.model-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:700}
+.mt-RF {background:var(--green-bg);color:var(--green);border:1px solid var(--green-b)}
+.mt-XGB{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-b)}
+.mt-LGB{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.mt-x  {background:#f3f4f6;color:var(--text3);border:1px solid var(--border)}
+.dist-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;width:80px;gap:1px}
+.db-a{background:var(--green)}
+.db-m{background:var(--amber)}
+.db-i{background:var(--red);opacity:.4}
+.pct-text{font-size:.75rem;font-weight:600;color:var(--text)}
+
+/* footer */
+footer{
+  border-top:1px solid var(--border);padding:1.5rem 2rem;
+  text-align:center;font-size:.73rem;color:var(--text3);
+  background:var(--white);line-height:1.9;
+}
+footer strong{color:var(--text2);font-weight:600}
+
+/* responsive */
+@media(max-width:640px){
+  .page{padding:0 1rem 3rem}
+  .act-row{grid-template-columns:1fr}
+  .hdr-nav .tab-btn{padding:6px 10px;font-size:.78rem}
+  .hdr-right .stat-chip{display:none}
+  .input-foot{flex-direction:column;align-items:flex-start}
 }
   </style>
 </head>
@@ -434,101 +411,71 @@ footer span { color: var(--text2); }
 
 <!-- ══════════════════ HEADER ══════════════════ -->
 <header>
-  <div class="header-inner">
+  <div class="hdr">
+
     <a href="/" class="logo">
+      <div class="logo-icon">B</div>
       <div>
         <div class="logo-name">BreastCAR</div>
-        <div class="logo-tag">Multi-Target QSAR Platform</div>
+        <div class="logo-sub">QSAR Platform</div>
       </div>
     </a>
-    <div class="header-meta">
-      <div class="hm-item">
-        <div class="hm-val">{{ n_targets }}</div>
-        <div class="hm-key">Targets</div>
-      </div>
-      <div class="hm-sep"></div>
-      <div class="hm-item">
-        <div class="hm-val">{{ n_targets * 2 }}</div>
-        <div class="hm-key">Models</div>
-      </div>
-      <div class="hm-sep"></div>
-      <div class="hm-item">
-        <div class="hm-val">RF / XGB / LGB</div>
-        <div class="hm-key">Algorithms</div>
-      </div>
-      <div class="hm-sep"></div>
-      <div class="status-dot">Models Online</div>
+
+    <nav class="hdr-nav" id="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('single',this)">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2"/></svg>
+        Single
+      </button>
+      <button class="tab-btn" onclick="switchTab('batch',this)">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="10" y2="12"/></svg>
+        Batch
+      </button>
+      <button class="tab-btn" onclick="switchTab('explore',this)">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
+        Explore
+      </button>
+    </nav>
+
+    <div class="hdr-right">
+      <span class="stat-chip">{{ n_targets }} targets · 234k compounds</span>
+      <span class="online-pill">Online</span>
     </div>
+
   </div>
 </header>
 
-<!-- ══════════════════ HERO ══════════════════ -->
-<div class="hero-banner">
-  <div class="hero-inner">
-    <h1>Multi-Target Breast Cancer Activity Predictor</h1>
-    <p>Enter a SMILES string to predict quantitative bioactivity (pIC50) and classify compounds as
-      Active, Moderate, or Inactive across <strong style="color:#fff">{{ n_targets }} validated
-      breast cancer targets</strong> using ensemble machine learning.</p>
-    <div class="hero-badges">
-      <span class="hbadge">Morgan ECFP4 (2048-bit)</span>
-      <span class="hbadge">RDKit 2D Descriptors</span>
-      <span class="hbadge">5-Fold Cross-Validation</span>
-      <span class="hbadge">Regression + Classification</span>
-      <span class="hbadge">Lipinski Rule of Five</span>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════ MAIN ══════════════════ -->
-<div class="main">
-
-  <div class="tab-bar" id="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('single',this)">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2"/></svg>
-      Single SMILES
-    </button>
-    <button class="tab-btn" onclick="switchTab('batch',this)">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="2" y1="4" x2="14" y2="4"/><line x1="2" y1="8" x2="14" y2="8"/><line x1="2" y1="12" x2="10" y2="12"/></svg>
-      Batch Prediction
-    </button>
-    <button class="tab-btn" onclick="switchTab('explore',this)">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10.5" y1="10.5" x2="14" y2="14"/></svg>
-      Target Explorer
-    </button>
-  </div>
+<!-- ══════════════════ PAGE ══════════════════ -->
+<div class="page">
 
   <!-- ──────── SINGLE TAB ──────── -->
   <div class="tab-pane active" id="tab-single">
 
-    <div class="card" style="margin-bottom:1.25rem">
-      <div class="card-header">
-        <div class="card-title">
-          <div class="card-title-accent"></div>
-          Compound Input
+    <div class="intro">
+      <h1>Multi-Target Breast Cancer Activity Predictor</h1>
+      <p>Enter a SMILES string to predict pIC50 and activity class across
+        <strong>{{ n_targets }} validated breast cancer targets</strong>
+        using ensemble ML (RF &middot; XGB &middot; LGB).</p>
+    </div>
+
+    <div class="input-card">
+      <textarea class="smiles-field" id="smiles-input" rows="3"
+        placeholder="Enter SMILES…   e.g.  CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1"></textarea>
+      <div class="input-foot">
+        <div class="ex-line">
+          <span class="ex-label">Try:</span>
+          <span class="ex-tag" onclick="setSmiles('CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1')">Tamoxifen</span>
+          <span class="ex-tag" onclick="setSmiles('Nc1ccc(cc1)c1nc2ccc(F)cc2c(=O)n1-c1ccc(Cl)cc1')">Lapatinib analogue</span>
+          <span class="ex-tag" onclick="setSmiles('CC(=O)Oc1ccccc1C(=O)O')">Aspirin</span>
+          <span class="ex-tag" onclick="setSmiles('CN1C=NC2=C1C(=O)N(C(=O)N2C)C')">Caffeine</span>
         </div>
-      </div>
-      <div class="input-row">
-        <div>
-          <textarea class="smiles-field" id="smiles-input" rows="3"
-            placeholder="Enter SMILES string…   e.g.  CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1"
-            ></textarea>
-          <div class="examples-line">
-            <span class="examples-label">Examples:</span>
-            <span class="ex-tag" onclick="setSmiles('CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1')">Tamoxifen</span>
-            <span class="ex-tag" onclick="setSmiles('Nc1ccc(cc1)c1nc2ccc(F)cc2c(=O)n1-c1ccc(Cl)cc1')">Lapatinib analogue</span>
-            <span class="ex-tag" onclick="setSmiles('CC(=O)Oc1ccccc1C(=O)O')">Aspirin</span>
-            <span class="ex-tag" onclick="setSmiles('CN1C=NC2=C1C(=O)N(C(=O)N2C)C')">Caffeine</span>
-            <span class="ex-tag" onclick="setSmiles('CC1=CC=C(C=C1)NC(=O)C2=CC=C(Cl)C=C2')">Acetaminophen analogue</span>
-          </div>
-        </div>
-        <div class="btn-col">
-          <button class="btn btn-primary" onclick="predict()" id="btn-predict">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
-            Predict
-          </button>
-          <button class="btn btn-ghost" onclick="clearAll()">
+        <div class="input-actions">
+          <button class="btn-ghost" onclick="clearAll()">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             Clear
+          </button>
+          <button class="btn-primary" onclick="predict()" id="btn-predict">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+            Predict
           </button>
         </div>
       </div>
@@ -539,15 +486,34 @@ footer span { color: var(--text2); }
       <span id="error-msg"></span>
     </div>
 
-    <div class="card loading-state" id="loading-state">
+    <div class="loading-state" id="loading-state">
       <div class="spinner"></div>
       <div class="loading-text">Running predictions across {{ n_targets }} targets…</div>
     </div>
 
     <div class="results" id="results">
 
-      <!-- Molecule + summary -->
-      <div class="result-top">
+      <!-- Activity summary -->
+      <div class="act-row">
+        <div class="act-card act-card-active">
+          <div class="act-num" id="n-active">–</div>
+          <div class="act-lbl">Active Targets</div>
+          <div class="act-sub">pIC50 &ge; 7.0 &nbsp;&middot;&nbsp; IC50 &le; 100 nM</div>
+        </div>
+        <div class="act-card act-card-moderate">
+          <div class="act-num" id="n-moderate">–</div>
+          <div class="act-lbl">Moderate Targets</div>
+          <div class="act-sub">pIC50 5.0–7.0 &nbsp;&middot;&nbsp; 100 nM–10 &micro;M</div>
+        </div>
+        <div class="act-card act-card-inactive">
+          <div class="act-num" id="n-inactive">–</div>
+          <div class="act-lbl">Inactive Targets</div>
+          <div class="act-sub">pIC50 &lt; 5.0 &nbsp;&middot;&nbsp; IC50 &gt; 10 &micro;M</div>
+        </div>
+      </div>
+
+      <!-- Molecule + props -->
+      <div class="result-mid">
         <div class="mol-card">
           <div class="mol-draw" id="mol-draw"></div>
           <div class="mol-label">
@@ -555,41 +521,25 @@ footer span { color: var(--text2); }
             <div class="mol-smi"  id="mol-smi"></div>
           </div>
         </div>
-
-        <div class="result-right">
-          <div class="act-row">
-            <div class="act-card act-card-active">
-              <div class="act-num" id="n-active">–</div>
-              <div class="act-lbl">Active Targets</div>
-              <div class="act-sub">pIC50 &ge; 7.0 &nbsp;&middot;&nbsp; IC50 &le; 100 nM</div>
-            </div>
-            <div class="act-card act-card-moderate">
-              <div class="act-num" id="n-moderate">–</div>
-              <div class="act-lbl">Moderate Targets</div>
-              <div class="act-sub">pIC50 5.0 – 7.0 &nbsp;&middot;&nbsp; 100 nM–10 &micro;M</div>
-            </div>
-            <div class="act-card act-card-inactive">
-              <div class="act-num" id="n-inactive">–</div>
-              <div class="act-lbl">Inactive Targets</div>
-              <div class="act-sub">pIC50 &lt; 5.0 &nbsp;&middot;&nbsp; IC50 &gt; 10 &micro;M</div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-header">
-              <div class="card-title">
-                <div class="card-title-accent"></div>
-                Physicochemical Properties
-              </div>
-            </div>
-            <div class="props-section">
-              <div class="props-grid" id="props-grid"></div>
-            </div>
-          </div>
+        <div class="props-card">
+          <div class="props-title">Physicochemical Properties</div>
+          <div class="props-grid" id="props-grid"></div>
         </div>
       </div>
 
-      <!-- Download row -->
+      <!-- Charts -->
+      <div class="charts-row">
+        <div class="chart-card">
+          <div class="chart-title">Activity Distribution</div>
+          <canvas id="chart-pie" height="210"></canvas>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Top 15 Targets by Predicted pIC50</div>
+          <canvas id="chart-bar" height="210"></canvas>
+        </div>
+      </div>
+
+      <!-- Download -->
       <div class="dl-row active" id="dl-row">
         <div class="dl-label">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -601,31 +551,10 @@ footer span { color: var(--text2); }
         </div>
       </div>
 
-      <!-- Charts -->
-      <div class="charts-row">
-        <div class="card chart-body">
-          <div class="card-title" style="margin-bottom:1rem">
-            <div class="card-title-accent"></div>
-            Activity Distribution
-          </div>
-          <canvas id="chart-pie" height="210"></canvas>
-        </div>
-        <div class="card chart-body">
-          <div class="card-title" style="margin-bottom:1rem">
-            <div class="card-title-accent"></div>
-            Top 15 Targets by Predicted pIC50
-          </div>
-          <canvas id="chart-bar" height="210"></canvas>
-        </div>
-      </div>
-
       <!-- Table -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <div class="card-title-accent"></div>
-            Detailed Predictions by Target
-          </div>
+      <div class="table-card">
+        <div class="table-hdr">
+          <div class="table-title">Detailed Predictions by Target</div>
           <div class="tbl-controls">
             <input class="tbl-search" id="tbl-search" placeholder="Search target…" oninput="filterTable()" />
             <div class="filter-btns">
@@ -658,27 +587,28 @@ footer span { color: var(--text2); }
 
   <!-- ──────── BATCH TAB ──────── -->
   <div class="tab-pane" id="tab-batch">
-    <div class="card" style="margin-bottom:1.25rem">
-      <div class="card-header">
-        <div class="card-title">
-          <div class="card-title-accent"></div>
-          Batch SMILES Input
-        </div>
-      </div>
-      <div class="input-row">
-        <textarea class="smiles-field" id="batch-input" rows="7"
-          placeholder="One SMILES per line:&#10;CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1&#10;CC(=O)Oc1ccccc1C(=O)O&#10;CN1C=NC2=C1C(=O)N(C(=O)N2C)C"></textarea>
-        <div class="btn-col">
-          <button class="btn btn-primary" onclick="predictBatch()">
+
+    <div class="intro">
+      <h1>Batch Prediction</h1>
+      <p>Predict activity for multiple compounds simultaneously &mdash; one SMILES per line.</p>
+    </div>
+
+    <div class="input-card">
+      <textarea class="smiles-field" id="batch-input" rows="8"
+        placeholder="One SMILES per line:&#10;CCC(=C(c1ccccc1)c1ccccc1)c1ccc(OCCN(C)C)cc1&#10;CC(=O)Oc1ccccc1C(=O)O&#10;CN1C=NC2=C1C(=O)N(C(=O)N2C)C"></textarea>
+      <div class="input-foot">
+        <span></span>
+        <div class="input-actions">
+          <button class="btn-ghost" onclick="document.getElementById('batch-input').value=''">Clear</button>
+          <button class="btn-primary" onclick="predictBatch()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
             Run Batch
           </button>
-          <button class="btn btn-ghost" onclick="document.getElementById('batch-input').value=''">Clear</button>
         </div>
       </div>
     </div>
 
-    <div class="card loading-state" id="batch-loading">
+    <div class="loading-state" id="batch-loading">
       <div class="spinner"></div>
       <div class="loading-text" id="batch-loading-txt">Processing batch…</div>
     </div>
@@ -689,17 +619,20 @@ footer span { color: var(--text2); }
         <button class="btn-dl" onclick="downloadBatchCSV()">Download Batch CSV</button>
       </div>
     </div>
+
   </div><!-- /tab-batch -->
 
   <!-- ──────── EXPLORE TAB ──────── -->
   <div class="tab-pane" id="tab-explore">
-    <div class="card" style="overflow:hidden">
+
+    <div class="intro">
+      <h1>Target Library</h1>
+      <p>{{ n_targets }} validated breast cancer targets &middot; Training set statistics &middot; Best-performing models per target</p>
+    </div>
+
+    <div class="explore-card">
       <div class="explore-toolbar">
-        <div class="explore-title-area">
-          <h3>Breast Cancer Target Library</h3>
-          <p>{{ n_targets }} validated targets &middot; Training set statistics &middot; Best-performing models</p>
-        </div>
-        <input class="explore-search" placeholder="Search target…" oninput="filterExplore(this.value)" />
+        <input class="explore-search" placeholder="Search target name…" oninput="filterExplore(this.value)" />
       </div>
       <div style="overflow-x:auto">
         <table class="explore-tbl">
@@ -739,7 +672,7 @@ footer span { color: var(--text2); }
                 </div>
                 {% endif %}
               </td>
-              <td style="font-family:var(--font-mono);font-weight:600">{{ meta.pic50_mean }}</td>
+              <td style="font-family:var(--mono);font-weight:600">{{ meta.pic50_mean }}</td>
               <td>
                 {% set rm = meta.best_reg or '–' %}
                 <span class="model-tag {{ 'mt-' + rm if rm in ['RF','XGB','LGB'] else 'mt-x' }}">{{ rm }}</span>
@@ -754,15 +687,16 @@ footer span { color: var(--text2); }
         </table>
       </div>
     </div>
+
   </div><!-- /tab-explore -->
 
-</div><!-- /main -->
+</div><!-- /page -->
 
 <footer>
-  <span>BreastCAR</span> &mdash; Multi-Target QSAR Predictor &nbsp;&middot;&nbsp;
-  Descriptors: Morgan ECFP4 (2048-bit) + RDKit 2D (13 features) &nbsp;&middot;&nbsp;
-  Models: Random Forest, XGBoost, LightGBM &nbsp;&middot;&nbsp;
-  Activity thresholds: Active pIC50 &ge; 7.0 &nbsp;&middot;&nbsp; Moderate 5.0–7.0 &nbsp;&middot;&nbsp; Inactive &lt; 5.0
+  <strong>BreastCAR</strong> &mdash; Multi-Target QSAR Predictor &nbsp;&middot;&nbsp;
+  Features: Morgan ECFP4 (2048-bit) + RDKit 2D Descriptors &nbsp;&middot;&nbsp;
+  Models: RF · XGB · LGB &nbsp;&middot;&nbsp;
+  Active pIC50 &ge; 7.0 &nbsp;&middot;&nbsp; Moderate 5.0–7.0 &nbsp;&middot;&nbsp; Inactive &lt; 5.0
 </footer>
 
 <!-- ══════════════════ SCRIPT ══════════════════ -->
@@ -773,7 +707,6 @@ let sortState = { col: 'pIC50', dir: -1 };
 let pieChart = null, barChart = null;
 let batchData = null;
 
-/* ── Tab switching ─────────────────────── */
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
@@ -781,13 +714,11 @@ function switchTab(name, btn) {
   document.getElementById('tab-' + name).classList.add('active');
 }
 
-/* ── Examples ──────────────────────────── */
 function setSmiles(smi) {
   document.getElementById('smiles-input').value = smi;
   document.getElementById('smiles-input').focus();
 }
 
-/* ── Clear ─────────────────────────────── */
 function clearAll() {
   document.getElementById('smiles-input').value = '';
   document.getElementById('results').classList.remove('active');
@@ -797,7 +728,6 @@ function clearAll() {
   if (barChart) { barChart.destroy(); barChart = null; }
 }
 
-/* ── Predict ───────────────────────────── */
 async function predict() {
   const smi = document.getElementById('smiles-input').value.trim();
   if (!smi) { showErr('Please enter a SMILES string.'); return; }
@@ -819,17 +749,14 @@ async function predict() {
 }
 
 function renderResults(d) {
-  // Molecule
   const draw = document.getElementById('mol-draw');
-  draw.innerHTML = d.svg || '<div style="padding:20px;color:#94a3b8;font-size:.8rem;text-align:center">No structure</div>';
-  // Force SVG to scale
+  draw.innerHTML = d.svg || '<div style="padding:20px;color:#9ca3af;font-size:.8rem;text-align:center">No structure</div>';
   const svg = draw.querySelector('svg');
   if (svg) { svg.removeAttribute('width'); svg.removeAttribute('height'); }
   document.getElementById('mol-name').textContent = d.name || 'Query Molecule';
   const s = d.smiles || '';
   document.getElementById('mol-smi').textContent = s.length > 55 ? s.slice(0,52)+'…' : s;
 
-  // Counts
   const sm = d.summary;
   document.getElementById('n-active').textContent   = sm.n_active;
   document.getElementById('n-moderate').textContent = sm.n_moderate;
@@ -844,7 +771,6 @@ function renderResults(d) {
   setTimeout(() => document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
 }
 
-/* ── Properties ────────────────────────── */
 function renderProps(props) {
   const g = document.getElementById('props-grid');
   if (!props) { g.innerHTML = ''; return; }
@@ -861,14 +787,13 @@ function renderProps(props) {
   }).join('');
   if (props.Lipinski_OK !== undefined) {
     const ok = props.Lipinski_OK;
-    const cl = ok ? 'style="background:var(--green-bg);border-color:#bbf7d0"' : 'style="background:var(--red-bg);border-color:#fecaca"';
+    const cl = ok ? 'style="background:var(--green-bg);border-color:var(--green-b)"' : 'style="background:var(--red-bg);border-color:var(--red-b)"';
     const vc = ok ? 'color:var(--green)' : 'color:var(--red)';
     html += `<div class="prop-item lipinski-row" ${cl}><div class="prop-val" style="${vc}">${ok?'Pass':'Fail'}</div><div class="prop-key">Lipinski Ro5</div></div>`;
   }
   g.innerHTML = html;
 }
 
-/* ── Charts ────────────────────────────── */
 function renderPieChart(s) {
   const ctx = document.getElementById('chart-pie').getContext('2d');
   if (pieChart) pieChart.destroy();
@@ -877,15 +802,15 @@ function renderPieChart(s) {
     data: {
       labels: ['Active','Moderate','Inactive'],
       datasets: [{ data: [s.n_active, s.n_moderate, s.n_inactive],
-        backgroundColor: ['rgba(22,163,74,0.75)','rgba(217,119,6,0.75)','rgba(220,38,38,0.75)'],
-        borderColor: ['#16a34a','#d97706','#dc2626'], borderWidth: 2, hoverOffset: 5 }]
+        backgroundColor: ['rgba(5,150,105,.75)','rgba(217,119,6,.75)','rgba(220,38,38,.75)'],
+        borderColor: ['#059669','#d97706','#dc2626'], borderWidth: 2, hoverOffset: 5 }]
     },
     options: {
       responsive: true, maintainAspectRatio: true, cutout: '65%',
       plugins: {
-        legend: { labels: { color: '#475569', font: { size: 12, family: 'Inter' }, padding: 14 } },
-        tooltip: { backgroundColor: '#1e293b', titleColor: '#f1f5f9', bodyColor: '#94a3b8',
-          borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1,
+        legend: { labels: { color: '#6b7280', font: { size: 12, family: 'Inter' }, padding: 14 } },
+        tooltip: { backgroundColor: '#1f2937', titleColor: '#f9fafb', bodyColor: '#9ca3af',
+          borderColor: 'rgba(255,255,255,.1)', borderWidth: 1,
           callbacks: { label: c => `  ${c.label}: ${c.raw} (${(c.raw/s.n_total*100).toFixed(1)}%)` } }
       }
     }
@@ -903,27 +828,26 @@ function renderBarChart(preds) {
     data: {
       labels: entries.map(([t]) => t),
       datasets: [{ label: 'pIC50', data: entries.map(([,v]) => v.pIC50),
-        backgroundColor: entries.map(([,v]) => v.label==='Active' ? 'rgba(22,163,74,0.75)' : v.label==='Moderate' ? 'rgba(217,119,6,0.75)' : 'rgba(220,38,38,0.55)'),
-        borderColor: entries.map(([,v]) => v.label==='Active' ? '#16a34a' : v.label==='Moderate' ? '#d97706' : '#dc2626'),
+        backgroundColor: entries.map(([,v]) => v.label==='Active' ? 'rgba(5,150,105,.75)' : v.label==='Moderate' ? 'rgba(217,119,6,.75)' : 'rgba(220,38,38,.55)'),
+        borderColor: entries.map(([,v]) => v.label==='Active' ? '#059669' : v.label==='Moderate' ? '#d97706' : '#dc2626'),
         borderWidth: 1.5, borderRadius: 4 }]
     },
     options: {
       responsive: true, maintainAspectRatio: true,
       plugins: { legend: { display: false },
-        tooltip: { backgroundColor: '#1e293b', titleColor: '#f1f5f9', bodyColor: '#94a3b8',
-          borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1,
+        tooltip: { backgroundColor: '#1f2937', titleColor: '#f9fafb', bodyColor: '#9ca3af',
+          borderColor: 'rgba(255,255,255,.1)', borderWidth: 1,
           callbacks: { label: c => `  pIC50: ${c.raw.toFixed(3)}` } } },
       scales: {
-        x: { ticks: { color: '#94a3b8', font: { size: 9, family: 'Inter' }, maxRotation: 45, minRotation: 30 },
-             grid: { color: 'rgba(0,0,0,0.04)' } },
-        y: { ticks: { color: '#94a3b8', font: { size: 10, family: 'Inter' } }, grid: { color: 'rgba(0,0,0,0.06)' },
-             title: { display: true, text: 'pIC50', color: '#94a3b8', font: { size: 11 } } }
+        x: { ticks: { color: '#9ca3af', font: { size: 9, family: 'Inter' }, maxRotation: 45, minRotation: 30 },
+             grid: { color: 'rgba(0,0,0,.04)' } },
+        y: { ticks: { color: '#9ca3af', font: { size: 10, family: 'Inter' } }, grid: { color: 'rgba(0,0,0,.05)' },
+             title: { display: true, text: 'pIC50', color: '#9ca3af', font: { size: 11 } } }
       }
     }
   });
 }
 
-/* ── Table ─────────────────────────────── */
 function renderTable(preds) {
   const rows = Object.entries(preds).map(([t,v]) => ({
     target:t, pIC50:v.pIC50, IC50:v.IC50_nM, label:v.label, probs:v.probabilities, dataset:v.dataset_size||0
@@ -936,7 +860,7 @@ function buildRow(r) {
   const p = r.pIC50!=null ? r.pIC50.toFixed(3) : '–';
   const i = r.IC50 !=null ? fmtIC50(r.IC50) : '–';
   const pct = r.pIC50!=null ? Math.min(100,(r.pIC50/11)*100) : 0;
-  const bc = r.label==='Active' ? '#16a34a' : r.label==='Moderate' ? '#d97706' : '#dc2626';
+  const bc = r.label==='Active' ? '#059669' : r.label==='Moderate' ? '#d97706' : '#dc2626';
   const lbl = r.label || 'Unknown';
   return `<tr data-label="${lbl}" data-target="${r.target}">
     <td class="td-name">${r.target}</td>
@@ -956,7 +880,7 @@ function buildProb(probs) {
   const top = Math.max(pA,pM,pI);
   const tc = top===pA?'var(--green)':top===pM?'var(--amber)':'var(--red)';
   return `<div style="display:flex;align-items:center;gap:8px">
-    <div class="prob-bar"><div style="flex:${pA};background:#16a34a;opacity:.8"></div><div style="flex:${pM};background:#d97706;opacity:.8"></div><div style="flex:${pI};background:#dc2626;opacity:.5"></div></div>
+    <div class="prob-bar"><div style="flex:${pA};background:#059669;opacity:.8"></div><div style="flex:${pM};background:#d97706;opacity:.8"></div><div style="flex:${pI};background:#dc2626;opacity:.5"></div></div>
     <span style="font-size:.72rem;font-weight:700;color:${tc}">${top}%</span>
   </div>`;
 }
@@ -969,7 +893,6 @@ function fmtIC50(nm) {
   return `${(nm/1e6).toFixed(2)} mM`;
 }
 
-/* ── Sort ──────────────────────────────── */
 function sortRows(rows) {
   rows.sort((a,b) => {
     const c = sortState.col;
@@ -990,7 +913,6 @@ function sortTable(col) {
   if (currentPredictions) renderTable(currentPredictions.predictions);
 }
 
-/* ── Filter ────────────────────────────── */
 function setFilter(label, btn) {
   activeFilter = label;
   document.querySelectorAll('.fb').forEach(b => b.classList.remove('sel'));
@@ -1005,7 +927,6 @@ function filterTable() {
   });
 }
 
-/* ── Batch ─────────────────────────────── */
 async function predictBatch() {
   const lines = document.getElementById('batch-input').value.trim().split('\n').map(l=>l.trim()).filter(Boolean);
   if (!lines.length) return;
@@ -1043,7 +964,6 @@ function renderBatch(results) {
   document.getElementById('batch-results').style.display = 'block';
 }
 
-/* ── Explore filter ────────────────────── */
 function filterExplore(q) {
   const v = q.toLowerCase();
   document.querySelectorAll('#explore-tbody tr').forEach(tr => {
@@ -1051,7 +971,6 @@ function filterExplore(q) {
   });
 }
 
-/* ── Downloads ─────────────────────────── */
 function downloadCSV() {
   if (!currentPredictions) return;
   const rows = Object.entries(currentPredictions.predictions).map(([t,v]) => {
@@ -1075,7 +994,6 @@ function downloadBatchCSV() {
 }
 function dl(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); }
 
-/* ── UI helpers ────────────────────────── */
 function setLoading(on) {
   document.getElementById('loading-state').classList.toggle('active', on);
   document.getElementById('btn-predict').disabled = on;
