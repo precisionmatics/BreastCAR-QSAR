@@ -238,17 +238,25 @@ def _predict_one(smi: str, name: Optional[str] = None) -> dict:
         clf = get_clf_model(target)
         if clf is not None:
             try:
-                label_map = {0: 'Inactive', 1: 'Moderate', 2: 'Active'}
-                pred = int(clf.predict(X)[0])
-                entry['label'] = label_map.get(pred, 'Unknown')
-                if hasattr(clf, 'predict_proba'):
-                    proba = clf.predict_proba(X)[0]
-                    entry['probabilities'] = {
-                        label_map.get(int(c), 'Unknown'): round(float(p), 3)
-                        for c, p in zip(clf.classes_, proba)
-                    }
+                raw = clf.predict(X)[0]
+                # models may return string labels or integer-encoded labels
+                if isinstance(raw, (int, np.integer)):
+                    int_map = {0: 'Inactive', 1: 'Moderate', 2: 'Active'}
+                    entry['label'] = int_map.get(int(raw), str(raw))
+                else:
+                    entry['label'] = str(raw)
             except:
                 entry['label'] = 'Unknown'
+            try:
+                if hasattr(clf, 'predict_proba'):
+                    proba  = clf.predict_proba(X)[0]
+                    int_map = {0: 'Inactive', 1: 'Moderate', 2: 'Active'}
+                    entry['probabilities'] = {}
+                    for c, p in zip(clf.classes_, proba):
+                        lbl = int_map.get(int(c), str(c)) if isinstance(c, (int, np.integer)) else str(c)
+                        entry['probabilities'][lbl] = round(float(p), 3)
+            except:
+                pass
 
         if 'label' not in entry and entry.get('pIC50') is not None:
             entry['label'] = classify_label(entry['pIC50'])
@@ -269,7 +277,10 @@ def _predict_one(smi: str, name: Optional[str] = None) -> dict:
             'HBD':           Descriptors.NumHDonors(mol),
             'HBA':           Descriptors.NumHAcceptors(mol),
             'RotBonds':      Descriptors.NumRotatableBonds(mol),
+            'Rings':         Descriptors.RingCount(mol),
+            'AromaticRings': Descriptors.NumAromaticRings(mol),
             'HeavyAtoms':    mol.GetNumHeavyAtoms(),
+            'FractionCSP3':  round(Descriptors.FractionCSP3(mol), 3),
             'Lipinski_OK':   (Descriptors.MolWt(mol) <= 500 and
                               Descriptors.MolLogP(mol) <= 5 and
                               Descriptors.NumHDonors(mol) <= 5 and
